@@ -1,0 +1,45 @@
+{
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "C_Cpp.dimInactiveRegions": false,
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "clangd.arguments": [
+        "--background-index",
+        "--cross-file-rename",
+        "--header-insertion=never"
+    ],
+    "cmake.configureOnOpen": false,
+    "editor.mouseWheelZoom": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.suggestSelection": "first",
+    "files.associations": {
+        "*.JSON-tmTheme": "json",
+        "Kconfig": "kconfig",
+        "Kconfig.*": "kconfig"
+    },
+    "files.exclude": {
+        "**/.cache": true,
+        "**/.classpath": true,
+        "**/.factorypath": true,
+        "**/.mypy_cache": true,
+        "**/.project": true,
+        "**/.settings": true
+    },
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUnknownArgumentType": "information",
+        "reportUnknownMemberType": "information",
+        "reportUnusedVariable": "information"
+    },
+    "python.analysis.typeCheckingMode": "strict",
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintUseMinimalCheckers": false,
+    "redhat.telemetry.enabled": false,
+    "terminal.integrated.copyOnSelection": true,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.editorAssociations": {
+        "git-rebase-todo": "default"
+    }
+}

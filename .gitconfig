@@ -1,0 +1,59 @@
+[core]
+    editor = code --wait
+    autocrlf = input
+    whitespace = cr-at-eol
+
+[diff]
+    tool = vscode
+
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+    tool = vscode
+
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+
+[alias]
+    co = checkout
+    fp = fetch -p
+    au = add -u
+    do = "!git diff origin/\"$(git branch --show-current)\""
+    unstage = restore --staged
+    upstreampush = "!git push --set-upstream origin \"$(git branch --show-current)\""
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr,%an)%Creset' --abbrev-commit --date=relative
+
+[include]
+    # path = C:/Windows/path/to/delta.gitconfig
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = yellow bold normal
+    file-decoration-style = yellow ul ol
+    hunk-header-style = line-number syntax
+    hunk-header-decoration-style = ul
+    hunk-header-file-style = normal
+
+[delta "code"]
+    # minus-style = syntax 
+    # plus-style = syntax "#006000"
+    # plus-emph-style = syntax "#008000"
+
+
+[delta]
+    features = decorations code
+    whitespace-error-style = 22 reverse
+
+    syntax-theme = Monokai Extended Mod
+
+    line-numbers = true
+    line-numbers-left-format = "{nm:>4}┊"
+    line-numbers-right-format = "{np:>4}│"
+
+[user]
+    name = Andreas Pettersson
+    email = andreaspettersson95@gmail.com
+
+[credential]
+    helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
