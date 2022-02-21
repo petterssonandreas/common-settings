@@ -213,3 +213,6 @@ source /usr/share/doc/fzf/examples/completion.bash
 _fzf_setup_completion path code
 
 export PATH=/home/andreas/.cargo/bin:$PATH
+
+# Enable direnv, needs to be late in the bashrc
+eval "$(direnv hook bash)"
