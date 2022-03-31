@@ -46,5 +46,6 @@
         "[Default Dark+]": {
             "rules": {"variable.fileScope": "#00d9ff"}
         }
-    }
+    },
+    "gitlens.defaultTimeFormat": "hh:mm"
 }
