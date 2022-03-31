@@ -215,6 +215,9 @@ source /usr/share/doc/fzf/examples/completion.bash
 # Enable fuzzy for vscode
 _fzf_setup_completion path code
 
+# Enable fuzzy git helpers commands
+source ~/common-settings/git_fuzzy.sh
+
 export PATH=/home/andreas/.cargo/bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
