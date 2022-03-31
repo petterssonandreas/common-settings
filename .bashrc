@@ -174,7 +174,7 @@ if ! shopt -oq posix; then
 fi
 
 # Add tab completion for tig
-source tig-completion.bash
+source ~/common-settings/tig-completion.bash
 
 # Git aliases
 alias gs='git status'
