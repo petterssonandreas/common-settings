@@ -41,5 +41,10 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "workbench.editorAssociations": {
         "git-rebase-todo": "default"
+    },
+    "editor.semanticTokenColorCustomizations": {
+        "[Default Dark+]": {
+            "rules": {"variable.fileScope": "#00d9ff"}
+        }
     }
 }
