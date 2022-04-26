@@ -120,3 +120,13 @@ To make it work better, do the following settings to the clangd extension in VS 
 - Add `--header-insertion=never`​​​​​​​ as a clangd argument
 
 **Note:** If you didn't do the update_alternatives approach above, you also need to change the clangd-path setting in the extension to point to your installed clangd, eg. `clangd-12`, or `/usr/bin/clangd-12`.
+
+## Ignore unknown options
+You might get errors in each file that clang doesn't recognize some compile flags. We can remove them by adding the following:
+
+```
+CompileFlags:
+  Remove: [-mfp16-format=ieee, -fno-reorder-functions]
+```
+
+into a file called `config.yaml` in the clangd folder. On Windows, this folder is most likely `C:\Users\MyUser\AppData\Local\clangd\`. Check https://clangd.llvm.org/config for more information.
