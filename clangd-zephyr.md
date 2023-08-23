@@ -103,6 +103,14 @@ west config build.cmake-args -- "-DLIBC_INCLUDE_DIR=~/gnuarmemb/arm-none-eabi/in
 
 <span dir="">This will remove all errors related to eg. log calls having undefined references to error numbers.</span>
 
+### Using cmake cache instead of west config
+If you are using a file for cmake args, with `.west/config` containing `cmake-args = -C C:/some/path/my_cache.cmake`, you can use the following commands in `my_cache.cmake`:
+
+```cmake
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE BOOL "")
+set(LIBC_INCLUDE_DIR "C:/ncs/toolchains/v2.4.0/opt/zephyr-sdk/arm-zephyr-eabi/arm-zephyr-eabi/include" CACHE PATH "")
+```
+
 ## Use clangd in VS Code
 
 Disable the standard C/C++ extension. Install the extension called "clangd" [(llvm-vs-code-extensions.vscode-clangd)](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd). 
