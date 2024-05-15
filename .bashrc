@@ -171,15 +171,15 @@ function bin() {
 }
 
 # Enable fuzzy keybindings with fzf (for eg. better Ctrl+R history)
-source /usr/share/doc/fzf/examples/key-bindings.bash
+# source /usr/share/doc/fzf/examples/key-bindings.bash
 
 # Enable fuzzy completion with fzf
-source /usr/share/doc/fzf/examples/completion.bash
+# source /usr/share/doc/fzf/examples/completion.bash
 # Enable fuzzy for vscode
-_fzf_setup_completion path code
+# _fzf_setup_completion path code
 
 # Enable fuzzy git helpers commands
-source ~/common-settings/git_fuzzy.sh
+# source ~/common-settings/git_fuzzy.sh
 
 export PATH=/home/andreas/.cargo/bin:$PATH
 
@@ -188,4 +188,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Enable direnv, needs to be late in the bashrc
-eval "$(direnv hook bash)"
+# eval "$(direnv hook bash)"
