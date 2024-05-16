@@ -145,6 +145,8 @@ alias gd='mydeltagitdiff'
 alias gds='mydeltagitdiff --staged'
 alias gdo='mydeltagitdiff origin/$(git branch --show-current)'
 
+export DELTA_PAGER="less -r --mouse"
+
 mydeltagitdiff() {
     if ! $(git rev-parse 2> /dev/null); then
         echo "Not in git repository"
@@ -155,9 +157,9 @@ mydeltagitdiff() {
         return 0
     fi
     if [ $# -gt 0 ]; then
-        git diff --color=always $* | delta | less -r
+        git diff --color=always $* | delta
     else
-        git diff --color=always | delta | less -r
+        git diff --color=always | delta
     fi
     return 0
 }
