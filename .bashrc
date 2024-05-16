@@ -172,6 +172,10 @@ function bin() {
   python3 -c "print(bin($*))"
 }
 
+
+alias cdw='cd /cygdrive/c/work'
+alias cdws='cd /cygdrive/c/work/svab'
+
 # Enable fuzzy keybindings with fzf (for eg. better Ctrl+R history)
 # source /usr/share/doc/fzf/examples/key-bindings.bash
 
