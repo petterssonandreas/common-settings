@@ -12,7 +12,8 @@ source ~/common-settings/.git-prompt.sh
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+# HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth:erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -31,6 +32,9 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# Add some options to less
+export LESS="-r --mouse --wheel-lines=3"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -78,7 +82,6 @@ PS1="$CYAN_PS"'\t'"$DECOLOR_PS"'|'"$GREEN_PS"'\u'"$DECOLOR_PS"':'"$CYAN_PS"'\w> 
 # Add active git branch to PS1, argument to __git_ps1 is formatting (you can change color etc)
 # PS1='$(__my_git_ps1 "\[\e[0;33m\]%s\[\e[0m\]|")'"$PS1"
 GIT_PS1_SHOWDIRTYSTATE=yes
-GIT_PS1_SHOWSTASHSTATE=yes
 GIT_PS1_SHOWUNTRACKEDFILES=yes
 GIT_PS1_SHOWUPSTREAM=verbose
 PS1='$(__git_ps1 "\[\e[0;33m\]%s\[\e[0m\]|")'"$PS1"
@@ -139,13 +142,19 @@ fi
 # Add tab completion for tig
 source ~/common-settings/tig-completion.bash
 
+# Add tab completion for git
+source ~/common-settings/git-completion.bash
+
+# Add completion for makefiles
+complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' ?akefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
+
 # Git aliases
 alias gs='git status'
 alias gd='mydeltagitdiff'
 alias gds='mydeltagitdiff --staged'
 alias gdo='mydeltagitdiff origin/$(git branch --show-current)'
 
-export DELTA_PAGER="less -r --mouse"
+export DELTA_PAGER="less"
 
 mydeltagitdiff() {
     if ! $(git rev-parse 2> /dev/null); then
@@ -175,17 +184,18 @@ function bin() {
 
 alias cdw='cd /cygdrive/c/work'
 alias cdws='cd /cygdrive/c/work/svab'
+alias cdq='cd /cygdrive/c/work/svab/qio2'
 
 # Enable fuzzy keybindings with fzf (for eg. better Ctrl+R history)
-# source /usr/share/doc/fzf/examples/key-bindings.bash
+source ~/common-settings/fzf-key-bindings.bash
 
 # Enable fuzzy completion with fzf
-# source /usr/share/doc/fzf/examples/completion.bash
+source ~/common-settings/fzf-completion.bash
 # Enable fuzzy for vscode
-# _fzf_setup_completion path code
+_fzf_setup_completion path code
 
 # Enable fuzzy git helpers commands
-# source ~/common-settings/git_fuzzy.sh
+source ~/common-settings/git_fuzzy.sh
 
 export PATH=/home/andreas/.cargo/bin:$PATH
 
@@ -193,5 +203,28 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+# alias python3='python3.12'
+
 # Enable direnv, needs to be late in the bashrc
 # eval "$(direnv hook bash)"
+
+# Add prompt command so that CWD is set. This makes it possible to use "duplicate" and get same directory
+# PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "`cygpath -w "$PWD" -C ANSI`"'
+# PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'echo "`cygpath -w "$PWD" -C ANSI`"'
+
+
+# my_prompt() {
+#   echo -en '\e]9;9;"'
+#   cygpath -w "$PWD" | tr -d '\n'
+#   echo -en '"\x07'
+# }
+
+# export PROMPT_COMMAND=my_prompt
+
+
+# PROMPT_COMMAND=${PROMPT_COMMAND:+"$PROMPT_COMMAND; "}'printf "\e]9;9;%s\e\\" "$(cygpath -w "$PWD")"'
+
+
+# After each command, append to the history file and reread it
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
