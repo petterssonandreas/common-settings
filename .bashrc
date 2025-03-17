@@ -171,10 +171,10 @@ function bin() {
 }
 
 # Enable fuzzy keybindings with fzf (for eg. better Ctrl+R history)
-source /usr/share/doc/fzf/examples/key-bindings.bash
+source ~/common-settings/fzf-key-bindings.bash
 
 # Enable fuzzy completion with fzf
-source /usr/share/doc/fzf/examples/completion.bash
+source ~/common-settings/fzf-completion.bash
 # Enable fuzzy for vscode
 _fzf_setup_completion path code
 
